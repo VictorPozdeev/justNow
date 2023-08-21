@@ -1,5 +1,5 @@
 fun main() {
-println(agoToText(60*60*24*2))
+println(agoToText(60*24))
 }
 
 fun agoToText(numberOfSeconds: Int): String = when (numberOfSeconds) {
@@ -15,8 +15,9 @@ fun toTextTimeUnitsMinutes(numberOfSeconds: Int): String {
     val minutes = numberOfSeconds / 60
     val minutesRemains = minutes % 10
     return when {
+        minutes in 10..20 -> "$minutes минут назад"
         minutesRemains == 1 && minutes != 11 -> "$minutes минуту назад"
-        minutes in 2..4 -> "$minutes минуты назад"
+        minutesRemains in 2..4 -> "$minutes минуты назад"
         else -> "$minutes минут назад"
     }
 }
